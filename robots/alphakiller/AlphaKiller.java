@@ -15,16 +15,7 @@ public class AlphaKiller extends Robot {
         // Continuous scanning and targeting
         while (true) {
             turnGunLeft(360); // Scan 360 degrees
-            ahead(40-Math.random()*20);
-            double r = Math.random();
-            if(r>=.5){
-                turnRight(Math.random()*50);
-                ahead(40-Math.random()*20);
-            }else if(r<.5){
-                turnLeft(Math.random()*50);
-                ahead(40-Math.random()*20);
-            }
-            i
+            moveOrDont(); 
         }
     }
 
@@ -46,6 +37,21 @@ public class AlphaKiller extends Robot {
                 goToPosition(width - 300, 300);
             } else {
                 goToPosition(400, 450);
+            }
+        }
+    }
+
+
+    private void moveOrDont(){
+        double p = Math.random()*10;
+        if (p >= 9){
+            double r = Math.random()*10;
+            if(r>=5){
+                turnRight(Math.random()*100);
+                ahead(80-Math.random()*50);
+            }else if(r<5){
+                turnLeft(Math.random()*100);
+                ahead(80-Math.random()*50);
             }
         }
     }
@@ -78,8 +84,10 @@ public class AlphaKiller extends Robot {
         turnGunRight(normalizeBearing(gabeDirection - getGunHeading()));
         // Fire at the target
         fire(2);
+        moveOrDont();
     }
     public void onHitWall(HitWallEvent h){
         turnRight(180);
+        moveOrDont(); 
     }
 }
