@@ -1,5 +1,6 @@
 package alphakiller;
 
+import robocode.HitWallEvent;
 import robocode.Robot;
 import robocode.ScannedRobotEvent;
 
@@ -14,6 +15,16 @@ public class AlphaKiller extends Robot {
         // Continuous scanning and targeting
         while (true) {
             turnGunLeft(360); // Scan 360 degrees
+            ahead(40-Math.random()*20);
+            double r = Math.random();
+            if(r>=.5){
+                turnRight(Math.random()*50);
+                ahead(40-Math.random()*20);
+            }else if(r<.5){
+                turnLeft(Math.random()*50);
+                ahead(40-Math.random()*20);
+            }
+            i
         }
     }
 
@@ -26,15 +37,15 @@ public class AlphaKiller extends Robot {
 
         if (yPos < height / 2) {
             if (xPos < width / 2) {
-                goToPosition(width - 50, height - 50);
+                goToPosition(width - 250, height - 300);
             } else {
-                goToPosition(50, height - 50);
+                goToPosition(400, height - 300);
             }
         } else {
             if (xPos < width / 2) {
-                goToPosition(width - 50, 50);
+                goToPosition(width - 300, 300);
             } else {
-                goToPosition(50, 50);
+                goToPosition(400, 450);
             }
         }
     }
@@ -67,5 +78,8 @@ public class AlphaKiller extends Robot {
         turnGunRight(normalizeBearing(gabeDirection - getGunHeading()));
         // Fire at the target
         fire(2);
+    }
+    public void onHitWall(HitWallEvent h){
+        turnRight(180);
     }
 }
