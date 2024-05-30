@@ -44,14 +44,14 @@ public class AlphaKiller extends Robot {
 
     private void moveOrDont(){
         double p = Math.random()*10;
-        if (p >= 9){
+        if (p >= 5){
             double r = Math.random()*10;
             if(r>=5){
                 turnRight(Math.random()*100);
-                ahead(80-Math.random()*50);
+                ahead(100-Math.random()*50);
             }else if(r<5){
                 turnLeft(Math.random()*100);
-                ahead(80-Math.random()*50);
+                ahead(100-Math.random()*50);
             }
         }
     }
